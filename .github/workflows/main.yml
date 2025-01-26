@@ -47,8 +47,11 @@ jobs:
       - name: Ensure logs directory exists
         run: mkdir -p ci_cd/logs
 
-      - name: Run tests
-        run: pytest > ci_cd/logs/test_log.txt
+      - name: Run unit tests
+        run: pytest tests/unit/ > ci_cd/logs/unit_test_log.txt
+
+      - name: Run integration tests
+        run: pytest tests/integration/ > ci_cd/logs/integration_test_log.txt
 
   deploy:
     runs-on: ubuntu-latest
@@ -56,7 +59,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Simulate deployment
+      - name: Set up Docker
         run: |
-          mkdir -p ci_cd/logs
-          echo "Deploying the model (placeholder for actual deployment steps)" > ci_cd/logs/deploy_log.txt
+          docker build -t ml-model-api .
+          docker run -d -p 5000:5000 ml-model-api
