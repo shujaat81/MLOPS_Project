@@ -54,12 +54,12 @@ jobs:
         run: pytest tests/integration/ > ci_cd/logs/integration_test_log.txt
 
   deploy:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Docker
-      run: |
-        docker build -t ml-model-api -f deployment/Dockerfile .
-        docker run -d -p 5000:5000 ml-model-api
+      - name: Set up Docker
+        run: |
+          docker build -t ml-model-api -f deployment/Dockerfile .
+          docker run -d -p 5000:5000 ml-model-api
