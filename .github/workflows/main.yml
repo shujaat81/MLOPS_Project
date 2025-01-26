@@ -53,12 +53,16 @@ jobs:
       - name: Run unit tests
         run: pytest -v tests/unit/ > ci_cd/logs/unit_test_log.txt
 
-      - name: Upload unit test logs
+      - name: Run integration tests
+        run: pytest -v tests/integration/ > ci_cd/logs/integration_test_log.txt
+
+      - name: Upload test logs
         uses: actions/upload-artifact@v3
         with:
-          name: unit_test_logs
-          path: ci_cd/logs/unit_test_log.txt
-
+          name: test_logs
+          path: |
+            ci_cd/logs/unit_test_log.txt
+            ci_cd/logs/integration_test_log.txt
 
   deploy:
     runs-on: ubuntu-latest
