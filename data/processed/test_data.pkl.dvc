@@ -1,0 +1,5 @@
+outs:
+- md5: 7f4f252af8cf9ca3334aef8626b9578c
+  size: 122890339
+  hash: md5
+  path: test_data.pkl
