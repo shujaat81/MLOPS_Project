@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-model-api
+  labels:
+    app: ml-model-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ml-model-api
+  template:
+    metadata:
+      labels:
+        app: ml-model-api
+    spec:
+      containers:
+      - name: ml-model-api
+        image: ml-model-api:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 10 

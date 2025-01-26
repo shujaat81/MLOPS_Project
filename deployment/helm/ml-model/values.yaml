@@ -1,0 +1,23 @@
+replicaCount: 3
+
+image:
+  repository: ml-model-api
+  tag: latest
+  pullPolicy: Never
+
+service:
+  type: NodePort
+  port: 80
+  nodePort: 30000
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
+livenessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 10 

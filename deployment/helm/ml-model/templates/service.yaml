@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-ml-model-api-service
+  labels:
+    app: ml-model-api
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 5000
+      nodePort: {{ .Values.service.nodePort }}
+      protocol: TCP
+  selector:
+    app: ml-model-api 
