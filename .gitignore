@@ -1,6 +1,7 @@
 # Ignore all files in data/raw/ and data/processed/ directories
 data/raw/*
 data/processed/*
+data/files/*
 
 # But don't ignore the .dvc files for tracking with DVC
 !data/raw/*.dvc
