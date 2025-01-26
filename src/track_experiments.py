@@ -21,7 +21,7 @@ test_x, test_y = test_data
 # Get subset of data
 SUBSET_SIZE = 1000  # Adjust this value based on your needs
 train_x, train_y = train_x[:SUBSET_SIZE], train_y[:SUBSET_SIZE]
-test_x, test_y = test_x[:SUBSET_SIZE//2], test_y[:SUBSET_SIZE//2]
+test_x, test_y = test_x[: SUBSET_SIZE // 2], test_y[: SUBSET_SIZE // 2]
 
 # MLflow experiment setup
 mlflow.set_experiment("CIFAR-10 SVM Experiment")
@@ -50,10 +50,7 @@ for params in param_sets:
         # Provide an input example for schema inference
         input_example = train_x[0].reshape(1, -1)  # Single input example
         mlflow.sklearn.log_model(
-            model, 
-            artifact_path="model",
-            input_example=input_example
+            model, artifact_path="model", input_example=input_example
         )
 
         print(f"Run completed with params: {params}, accuracy: {accuracy:.2f}")
-

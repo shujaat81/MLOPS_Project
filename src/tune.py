@@ -16,18 +16,20 @@ test_x, test_y = test_data
 # Get subset of data
 SUBSET_SIZE = 1000  # Adjust this value based on your needs
 train_x, train_y = train_x[:SUBSET_SIZE], train_y[:SUBSET_SIZE]
-test_x, test_y = test_x[:SUBSET_SIZE//2], test_y[:SUBSET_SIZE//2]
+test_x, test_y = test_x[: SUBSET_SIZE // 2], test_y[: SUBSET_SIZE // 2]
 
 # Define hyperparameter grid
 param_grid = {
     "C": [0.1, 1, 10],
     "kernel": ["linear", "rbf"],
-    "gamma": ["scale", "auto"]
+    "gamma": ["scale", "auto"],
 }
 
 # Perform hyperparameter tuning
 svm = SVC()
-grid_search = GridSearchCV(estimator=svm, param_grid=param_grid, cv=3, scoring="accuracy", verbose=2)
+grid_search = GridSearchCV(
+    estimator=svm, param_grid=param_grid, cv=3, scoring="accuracy", verbose=2
+)
 grid_search.fit(train_x, train_y.ravel())
 
 # Get the best parameters and accuracy
@@ -46,7 +48,7 @@ print(f"Test Accuracy: {test_accuracy:.2f}")
 results = {
     "best_parameters": best_params,
     "best_cross_validation_accuracy": best_accuracy,
-    "test_accuracy": test_accuracy
+    "test_accuracy": test_accuracy,
 }
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "../models/tuned")
 save_results(results, os.path.join(RESULTS_DIR, "tuning_results.json"))

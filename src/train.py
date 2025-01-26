@@ -14,21 +14,16 @@ test_x, test_y = test_data
 # Get subset of data
 SUBSET_SIZE = 1000  # Adjust this value based on your needs
 train_x, train_y = train_x[:SUBSET_SIZE], train_y[:SUBSET_SIZE]
-test_x, test_y = test_x[:SUBSET_SIZE//2], test_y[:SUBSET_SIZE//2]
+test_x, test_y = test_x[: SUBSET_SIZE // 2], test_y[: SUBSET_SIZE // 2]
 
 # Train and evaluate SVM
-svm = SVC(kernel='linear', C=1)
+svm = SVC(kernel="linear", C=1)
 svm.fit(train_x, train_y.ravel())
 y_pred = svm.predict(test_x)
 accuracy = accuracy_score(test_y, y_pred)
 
 # Log results
 print(f"Baseline Accuracy: {accuracy:.2f}")
-results = {
-    "model": "SVM",
-    "kernel": "linear",
-    "C": 1,
-    "test_accuracy": accuracy
-}
+results = {"model": "SVM", "kernel": "linear", "C": 1, "test_accuracy": accuracy}
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "../models/trained")
 save_results(results, os.path.join(RESULTS_DIR, "baseline_results.json"))

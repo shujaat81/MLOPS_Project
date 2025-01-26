@@ -6,6 +6,7 @@ from utils.data_utils import save_data, preprocess_data
 RAW_DIR = os.path.join(os.path.dirname(__file__), "../data/raw")
 PROCESSED_DIR = os.path.join(os.path.dirname(__file__), "../data/processed")
 
+
 def preprocess_and_save_data():
     """Downloads CIFAR-10, preprocesses it, and saves raw/processed data."""
     os.makedirs(RAW_DIR, exist_ok=True)
@@ -27,6 +28,7 @@ def preprocess_and_save_data():
     save_data((x_train, y_train), os.path.join(PROCESSED_DIR, "train_data.pkl"))
     save_data((x_test, y_test), os.path.join(PROCESSED_DIR, "test_data.pkl"))
     print("Processed data saved to processed/.")
+
 
 if __name__ == "__main__":
     preprocess_and_save_data()

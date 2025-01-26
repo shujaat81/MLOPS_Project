@@ -9,9 +9,11 @@ model = joblib.load(MODEL_PATH)
 # Initialize Flask app
 app = Flask(__name__)
 
+
 @app.route("/")
 def home():
     return "SVM Model API is running!"
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -22,6 +24,7 @@ def predict():
         return jsonify({"prediction": int(prediction[0])})
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
