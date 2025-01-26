@@ -1,0 +1,9 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.3.4, pluggy-1.5.0
+rootdir: /home/shujaat_tracebloc/open_source/MLOPS_Project
+plugins: cov-6.0.0
+collected 5 items
+
+tests/unit/test_preprocess.py ....s                                      [100%]
+
+========================= 4 passed, 1 skipped in 0.12s =========================
