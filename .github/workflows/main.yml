@@ -31,6 +31,12 @@ jobs:
       - name: Run linting
         run: black --check src/ 2>&1 | tee ci_cd/logs/lint_log.txt
 
+      - name: Upload lint logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: lint_logs
+          path: ci_cd/logs/lint_log.txt
+
   test:
     runs-on: ubuntu-latest
     steps:
@@ -77,3 +83,9 @@ jobs:
         run: |
           docker build -t ml-model-api -f deployment/Dockerfile . 2>&1 | tee ci_cd/logs/deploy_log.txt
           docker run -d -p 5000:5000 ml-model-api
+
+      - name: Upload deploy logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: deploy_logs
+          path: ci_cd/logs/deploy_log.txt
