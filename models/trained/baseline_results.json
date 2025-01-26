@@ -1,0 +1,6 @@
+{
+    "model": "SVM",
+    "kernel": "linear",
+    "C": 1,
+    "test_accuracy": 0.292
+}

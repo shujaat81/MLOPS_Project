@@ -1,0 +1,6 @@
+Flask
+Werkzeug
+joblib
+numpy
+scikit-learn
+tensorflow

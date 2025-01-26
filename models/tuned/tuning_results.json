@@ -1,0 +1,9 @@
+{
+    "best_parameters": {
+        "C": 10,
+        "gamma": "auto",
+        "kernel": "rbf"
+    },
+    "best_cross_validation_accuracy": 0.3670167173161185,
+    "test_accuracy": 0.312
+}
