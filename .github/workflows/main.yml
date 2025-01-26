@@ -54,7 +54,7 @@ jobs:
         run: mkdir -p ci_cd/logs
 
       - name: Run unit tests
-        run: pytest -v tests/unit/ > ci_cd/logs/unit_test_log.txt
+        run: pytest -v tests/unitss/ > ci_cd/logs/unit_test_log.txt
 
       - name: Run integration tests
         run: pytest -v tests/integration/ > ci_cd/logs/integration_test_log.txt
