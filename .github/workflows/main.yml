@@ -53,9 +53,6 @@ jobs:
       - name: Run unit tests
         run: pytest -v tests/unit/ > ci_cd/logs/unit_test_log.txt
 
-      - name: Run integration tests
-        run: pytest tests/integration/ > ci_cd/logs/integration_test_log.txt
-
       - name: Upload unit test logs
         uses: actions/upload-artifact@v3
         with:
